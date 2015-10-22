@@ -1,0 +1,19 @@
+{
+  "name": "wallpaper-groups",
+  "version": "1.0.0",
+  "description": "Script to create all 17 possible wallpaper groups (https://en.wikipedia.org/wiki/Wallpaper_group)",
+  "main": "lib/index.js",
+  "scripts": {
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run compile"
+  },
+  "keywords": [
+    "pattern",
+    "wallpaper group"
+  ],
+  "author": "Andreas Koeberle",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "5.8.23"
+  }
+}
