@@ -1,12 +1,20 @@
 import {rotate90, rotate120, rotate180} from './geom/rotate';
-import {translate1W2H, translate2W2H, translate2W1H, translateShifted, translateHex } from './geom/translate';
+import {translate1W1H, translate1W2H, translate2W2H, translate2W1H, translateShifted, translateHex } from './geom/translate';
 import { mirror, mirrorHorizontal, mirrorVertical, mirrorDiagonalRL, mirrorDiagonalLR, mirrorHex, mirrorTriangle } from './geom/mirror';
 import { split, rectCoords, triangleCoords, rightTriangleCoords } from './geom/util';
 import glideTranslate from './geom/glideTranslate';
 import { unnest } from 'ramda';
 
 const linesToTile = (lines) => [unnest(lines)];
+
 export default {
+  p1({width, height, columns}) {
+    return {
+      steps: [],
+      translate: translate1W1H(width, height, columns),
+      tileCoordinates: rectCoords(width, height)
+    };
+  },
   p2({width, height, columns}) {
     return {
       steps: [rotate180({x: width / 2, y: height})],
