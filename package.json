@@ -5,15 +5,33 @@
   "main": "lib/index.js",
   "scripts": {
     "compile": "babel -d lib/ src/",
-    "prepublish": "npm run compile"
+    "prepublish": "npm run compile",
+    "lint": "eslint src --fix "
   },
   "keywords": [
     "pattern",
     "wallpaper group"
   ],
-  "author": "Andreas Koeberle",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eskimoblood/wallpaper-groups"
+  },
+  "bugs": {
+    "url": "https://github.com/eskimoblood/wallpaper-groups/issues"
+  },
+  "author": {
+    "name": "Andreas Köberle",
+    "email": "koeberle@gmail.com"
+  },
+  "license": "MIT",
   "devDependencies": {
-    "babel": "5.8.23"
+    "babel": "5.8.23",
+    "babel-eslint": "^4.1.3",
+    "eslint": "^1.7.3",
+    "eslint-config-airbnb": "^0.1.0",
+    "eslint-plugin-react": "^3.6.3"
+  },
+  "dependencies": {
+    "ramda": "^0.18.0"
   }
 }
