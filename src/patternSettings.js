@@ -6,7 +6,6 @@ import glideTranslate from './geom/glideTranslate';
 import { unnest } from 'ramda';
 
 const linesToTile = (lines) => [unnest(lines)];
-
 export default {
   p1({width, height, columns}) {
     return {
@@ -117,29 +116,43 @@ export default {
       tileCoordinates: rightTriangleCoords(width, height)
     };
   },
-  p3({width, height, columns}) {
-    const rotate = rotate120({x: width / 2, y: height / 2});
+  p3({width, columns}) {
+    const centerX = Math.sqrt(3) / 2 * width;
+    const rotate = rotate120({x: centerX, y: width});
+
     return {
       steps: [rotate, rotate],
-      translate: translateHex(width, height, columns)
+      translate: translateHex(centerX * 2, width * 2, columns),
+      tileCoordinates: [
+        {x: 0, y: width / 2},
+        {x: centerX, y: width},
+        {x: centerX, y: width * 2},
+        {x: 0, y: width * 1.5}
+      ]
     };
   },
-  p3m1({width, height, columns}) {
-    const rotate = rotate120({x: width / 2, y: height / 2});
+  p3m1({width, columns}) {
+    const centerX = Math.sqrt(3) / 2 * width;
+    const rotate = rotate120({x: centerX, y: width});
 
     return {
       steps: [
-        mirrorHex(width, height),
+        mirrorHex(width),
         linesToTile,
         rotate,
         rotate
       ],
-      translate: translateHex(width, height, columns)
+      translate: translateHex(centerX * 2, width * 2, columns),
+      tileCoordinates: [
+        {x: centerX, y: width},
+        {x: 0, y: width * 0.5},
+        {x: 0, y: width * 1.5}
+      ]
     };
   },
   p31m({width, columns}) {
-    const height = Math.sqrt(3) / 2 * width / 3 * 2;
-    const rotate = rotate120({x: width / 3, y: 2 * height / 3});
+    const height = Math.sqrt(3) / 2 * width;
+    const rotate = rotate120({x: width / 2, y: 2 * height / 3});
 
     return {
       steps: [
@@ -148,21 +161,31 @@ export default {
         linesToTile,
         mirrorTriangle(width, height)
       ],
-      translate: translateShifted(width / 3 * 2, height, columns)
+      translate: translateShifted(width / 3 * 2, height, columns),
+      tileCoordinates: [
+        {x: 0, y: height},
+        {x: width / 2, y: 2 * height / 3},
+        {x: width, y: height}
+      ]
     };
   },
   p6({width, columns}) {
-    const height = Math.sqrt(3) / 2 * width / 3 * 2;
-    const rotate = rotate120({x: width / 3, y: 2 * height / 3});
+    const height = Math.sqrt(3) / 2 * width;
+    const rotate = rotate120({x: width / 2, y: 2 * height / 3});
 
     return {
       steps: [
         rotate,
         rotate,
         linesToTile,
-        rotate180(split({x: width / 3, y: 0}, {x: width / 3 * 2, y: height}, 0.5))
+        rotate180(split({x: width / 2, y: 0}, {x: width , y: height}, 0.5))
       ],
-      translate: translateShifted(width / 3 * 2, height, columns)
+      translate: translateShifted(width, height, columns),
+      tileCoordinates: [
+        {x: 0, y: height},
+        {x: width / 2, y: 2 * height / 3},
+        {x: width, y: height}
+      ]
 
     };
   }

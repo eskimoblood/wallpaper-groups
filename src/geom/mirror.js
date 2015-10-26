@@ -23,12 +23,12 @@ export const mirrorDiagonalRL = (width, height) => mapTransform(mirror([{x: 0, y
 
 export const mirrorDiagonalLR = (width, height) => mapTransform(mirror([{x: width, y: 0}, {x: 0, y: height}]));
 
-export const mirrorHex = (width, height) => mapTransform(mirror([{x: width / 2, y: height / 2}, {
-  x: 0,
-  y: height * 0.75
-}]));
+export const mirrorHex = (width) => mapTransform(mirror([
+  {x: Math.sqrt(3) / 2 * width, y: width},
+  {x: 0, y: width * 0.5}
+]));
 
-export const mirrorTriangle = (width, height) => mapTransform(mirror([{x: width / 3, y: 0}, {
-  x: width / 3 * 2,
-  y: height
-}]));
+export const mirrorTriangle = (width, height) => mapTransform(mirror([
+  {x: width / 2, y: 0},
+  {x: width, y: height}
+]));

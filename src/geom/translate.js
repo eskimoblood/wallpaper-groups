@@ -8,16 +8,16 @@ const translate = curry((fW, fH, width, height, columns, i)=>({
   y: fH * h(height, i, columns)
 }));
 
-const _translateShifted = curry(curry((fH, width, height, columns, i)=> {
+const _translateShifted = curry((fH, width, height, columns, i)=> {
   var offsetX = 0;
   if (Math.floor(i / columns) % 2) {
     offsetX = width / 2;
   }
   return {
     x: offsetX + w(width, i, columns),
-    y: h(height, i, columns)
+    y: fH * h(height, i, columns)
   };
-}));
+});
 
 export const translate1W1H = translate(1, 1);
 
@@ -29,4 +29,4 @@ export const translate2W2H = translate(2, 2);
 
 export const translateShifted = _translateShifted(1);
 
-export const translateHex = translateShifted(0.75);
+export const translateHex = _translateShifted(0.75);
