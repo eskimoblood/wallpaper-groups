@@ -1,6 +1,6 @@
 {
   "name": "wallpaper-groups",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Script to create all 17 possible wallpaper groups (https://en.wikipedia.org/wiki/Wallpaper_group)",
   "main": "lib/index.js",
   "scripts": {
