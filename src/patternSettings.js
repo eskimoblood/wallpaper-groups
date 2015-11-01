@@ -24,7 +24,7 @@ export default {
   pm({width, height, columns}) {
     return {
       steps: [mirrorVertical(width, height)],
-      translate: translate1W2H(width, height, columns),
+      translate: translate1W1H(width, height, columns),
       tileCoordinates: rectCoords(width, height)
     };
   },
