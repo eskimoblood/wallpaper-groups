@@ -24,7 +24,7 @@ export default {
   pm({width, height, columns}) {
     return {
       steps: [mirrorVertical(width, height)],
-      translate: translate1W1H(width, height, columns),
+      translate: translate1W2H(width, height, columns),
       tileCoordinates: rectCoords(width, height)
     };
   },
@@ -38,7 +38,7 @@ export default {
   cm({width, height, columns}) {
     return {
       steps: [mirrorHorizontal(width, height)],
-      translate: translateShifted(width, height / 2, columns),
+      translate: translateShifted(width, height , columns),
       tileCoordinates: triangleCoords(width, height)
     };
   },
@@ -70,7 +70,7 @@ export default {
         mirrorVertical(width, height),
         mirrorHorizontal(width, height)
       ],
-      translate: translateShifted(width, height, columns),
+      translate: translateShifted(width*2, height, columns),
       tileCoordinates: rightTriangleCoords(width, height)
 
     };
@@ -161,7 +161,7 @@ export default {
         linesToTile,
         mirrorTriangle(width, height)
       ],
-      translate: translateShifted(width / 3 * 2, height, columns),
+      translate: translateShifted(width, height, columns),
       tileCoordinates: [
         {x: 0, y: height},
         {x: width / 2, y: 2 * height / 3},
